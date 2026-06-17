@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>Playing Game</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+
+
+<body>
+
+
+<div class="game-container">
+
+
+<iframe
+
+id="gameFrame"
+
+allowfullscreen
+
+>
+
+
+</iframe>
+
+
+</div>
+
+
+<script>
+
+
+const params =
+new URLSearchParams(location.search);
+
+
+const game =
+params.get("game");
+
+
+document
+.getElementById("gameFrame")
+.src = game;
+
+
+</script>
+
+
+</body>
+
+</html>

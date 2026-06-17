@@ -1,42 +1,37 @@
-fetch("data/games.json")
+[
+    {
+        "id": "krunker",
+        "title": "Krunker.io",
+        "description": "A fast-paced browser FPS with multiplayer combat, custom maps, and competitive gameplay.",
+        "category": "FPS",
+        "thumbnail": "assets/images/krunker.png",
+        "url": "https://krunker.io"
+    },
 
-.then(response => response.json())
+    {
+        "id": "kirka",
+        "title": "Kirka.io",
+        "description": "A browser-based FPS shooter with different weapons, maps, and multiplayer modes.",
+        "category": "FPS",
+        "thumbnail": "assets/images/kirka.png",
+        "url": "https://kirka.io"
+    },
 
-.then(games => {
+    {
+        "id": "surviv",
+        "title": "Surviv.io",
+        "description": "A top-down battle royale game where players fight to become the last survivor.",
+        "category": "Survival",
+        "thumbnail": "assets/images/surviv.png",
+        "url": "https://surviv.io"
+    },
 
-
-const container =
-document.getElementById("games");
-
-
-games.forEach(game => {
-
-
-container.innerHTML += `
-
-<div class="card">
-
-<img src="${game.thumbnail}">
-
-<h2>${game.title}</h2>
-
-<p>
-${game.description}
-</p>
-
-
-<a href="play.html?game=${game.url}">
-PLAY
-</a>
-
-
-</div>
-
-
-`;
-
-
-});
-
-
-});
+    {
+        "id": "agar",
+        "title": "Agar.io",
+        "description": "Grow your cell, eat smaller players, and dominate the leaderboard.",
+        "category": "Arcade",
+        "thumbnail": "assets/images/agar.png",
+        "url": "https://agar.io"
+    }
+]

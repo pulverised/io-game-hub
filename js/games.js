@@ -1,57 +1,53 @@
 const games = [
 
+
 {
-    title:"Kirka IO",
+title:"Snipers.io",
 
-    image:"images/tank.jpg",
+image:"images/snipers.jpg",
 
-    description:
-    "Multiplayer shooter.",
+description:
+"Online sniper battle game.",
 
-    categories:[
-        "Action",
-        "Multiplayer"
-    ],
 
-    url:
-    "https://snipers.io"
+categories:[
+"Action",
+"Multiplayer"
+],
+
+
+type:"external",
+
+
+url:
+"https://snipers.io"
+
 },
 
 
 
-{
-    title:"Snake Battle",
-
-    image:"images/snake.jpg",
-
-    description:
-    "Classic snake with online players.",
-
-    categories:[
-        "Strategy",
-        "Multiplayer"
-    ],
-
-    url:
-    "https://example.com"
-},
-
-
 
 {
-    title:"Space Arena",
+title:"Example Game",
 
-    image:"images/arena.jpg",
+image:"images/example.jpg",
 
-    description:
-    "Fight other players in space.",
+description:
+"Embedded browser game.",
 
-    categories:[
-        "Action"
-    ],
 
-    url:
-    "https://example.com"
+categories:[
+"Strategy"
+],
+
+
+type:"iframe",
+
+
+url:
+"https://example.com"
+
 }
+
 
 ];

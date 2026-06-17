@@ -1,98 +1,142 @@
 const grid =
-document.getElementById("game-grid");
+document.getElementById(
+"game-grid"
+);
 
 
 const search =
-document.getElementById("search");
+document.getElementById(
+"search"
+);
 
 
-let activeCategory="All";
-
-
-
-function displayGames(){
-
-    grid.innerHTML="";
-
-
-    let filtered =
-    games.filter(game=>{
-
-
-        let matchesSearch =
-        game.title
-        .toLowerCase()
-        .includes(
-            search.value.toLowerCase()
-        );
-
-
-        let matchesCategory =
-        activeCategory==="All" ||
-        game.categories.includes(activeCategory);
-
-
-        return matchesSearch &&
-        matchesCategory;
-
-    });
+let category="All";
 
 
 
-    filtered.forEach(game=>{
+function showGames(){
 
 
-        let card=document.createElement("div");
-
-
-        card.className="game-card";
-
-
-        card.innerHTML=`
-
-        <img src="${game.image}">
-
-        <h2>
-        ${game.title}
-        </h2>
-
-        <p>
-        ${game.description}
-        </p>
-
-        <button>
-        Play Now
-        </button>
-
-        `;
+grid.innerHTML="";
 
 
 
-        card.querySelector("button")
-        .onclick=()=>{
-
-            localStorage.setItem(
-                "selectedGame",
-                JSON.stringify(game)
-            );
+games
+.filter(game=>{
 
 
-            window.location.href="game.html";
+let searchMatch =
+game.title
+.toLowerCase()
+.includes(
+search.value.toLowerCase()
+);
 
-        };
 
 
-        grid.appendChild(card);
+let categoryMatch =
+category==="All" ||
+game.categories.includes(category);
 
-    });
+
+
+return searchMatch &&
+categoryMatch;
+
+
+})
+
+
+.forEach(game=>{
+
+
+const card =
+document.createElement(
+"div"
+);
+
+
+card.className =
+"game-card";
+
+
+
+card.innerHTML = `
+
+<img src="${game.image}">
+
+
+<h2>
+${game.title}
+</h2>
+
+
+<p>
+${game.description}
+</p>
+
+
+<button>
+Play
+</button>
+
+`;
+
+
+
+card
+.querySelector("button")
+.onclick=()=>{
+
+
+if(game.type==="external"){
+
+
+window.open(
+game.url,
+"_blank"
+);
+
+
+}
+
+
+else{
+
+
+localStorage.setItem(
+"selectedGame",
+JSON.stringify(game)
+);
+
+
+window.location.href =
+"game.html";
+
 
 }
 
 
 
+};
+
+
+
+grid.appendChild(card);
+
+
+
+});
+
+
+}
+
+
+
+
 search.addEventListener(
 "input",
-displayGames
+showGames
 );
 
 
@@ -106,10 +150,13 @@ document
 
 button.onclick=()=>{
 
-    activeCategory=
-    button.dataset.category;
 
-    displayGames();
+category =
+button.dataset.category;
+
+
+showGames();
+
 
 };
 
@@ -118,4 +165,4 @@ button.onclick=()=>{
 
 
 
-displayGames();
+showGames();

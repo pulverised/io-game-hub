@@ -1,0 +1,234 @@
+let allGames = [];
+
+const gameContainer =
+document.getElementById("gameContainer");
+
+const searchInput =
+document.getElementById("searchInput");
+
+
+
+// Load games database
+
+fetch("data/games.json")
+
+.then(response => response.json())
+
+.then(games => {
+
+    allGames = games;
+
+    displayGames(allGames);
+
+});
+
+
+
+
+// Create game cards
+
+function displayGames(games){
+
+
+gameContainer.innerHTML = "";
+
+
+
+if(games.length === 0){
+
+gameContainer.innerHTML = `
+
+<div class="no-games">
+
+No games found.
+
+</div>
+
+`;
+
+return;
+
+}
+
+
+
+
+games.forEach(game => {
+
+
+const card = document.createElement("div");
+
+
+card.className = "game-card";
+
+
+
+card.innerHTML = `
+
+
+<img 
+src="${game.thumbnail}"
+alt="${game.title}"
+onerror="this.src='assets/images/default.png'"
+>
+
+
+
+<div class="game-content">
+
+
+<h3>
+${game.title}
+</h3>
+
+
+
+<p>
+${game.description}
+</p>
+
+
+
+<span class="category">
+
+${game.category}
+
+</span>
+
+
+
+<a 
+class="play-button"
+href="play.html?game=${game.id}"
+>
+
+PLAY NOW
+
+</a>
+
+
+</div>
+
+
+`;
+
+
+
+gameContainer.appendChild(card);
+
+
+
+});
+
+
+}
+
+
+
+
+// Search system
+
+
+searchInput.addEventListener(
+"input",
+function(){
+
+
+const searchValue =
+this.value.toLowerCase();
+
+
+
+const filtered =
+allGames.filter(game => {
+
+
+return (
+
+game.title
+.toLowerCase()
+.includes(searchValue)
+
+||
+
+game.description
+.toLowerCase()
+.includes(searchValue)
+
+||
+
+game.category
+.toLowerCase()
+.includes(searchValue)
+
+);
+
+
+});
+
+
+
+displayGames(filtered);
+
+
+
+});
+
+
+
+
+
+// Category buttons
+
+
+const categoryButtons =
+document.querySelectorAll(
+"[data-category]"
+);
+
+
+
+categoryButtons.forEach(button => {
+
+
+button.addEventListener(
+"click",
+()=>{
+
+
+const category =
+button.dataset.category;
+
+
+
+if(category === "all"){
+
+
+displayGames(allGames);
+
+
+return;
+
+
+}
+
+
+
+
+const filtered =
+allGames.filter(game =>
+
+game.category === category
+
+);
+
+
+
+displayGames(filtered);
+
+
+
+});
+
+
+});

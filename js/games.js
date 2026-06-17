@@ -1,37 +1,193 @@
-[
-    {
-        "id": "krunker",
-        "title": "Krunker.io",
-        "description": "A fast-paced browser FPS with multiplayer combat, custom maps, and competitive gameplay.",
-        "category": "FPS",
-        "thumbnail": "assets/images/krunker.png",
-        "url": "https://krunker.io"
-    },
+let allGames = [];
 
-    {
-        "id": "kirka",
-        "title": "Kirka.io",
-        "description": "A browser-based FPS shooter with different weapons, maps, and multiplayer modes.",
-        "category": "FPS",
-        "thumbnail": "assets/images/kirka.png",
-        "url": "https://kirka.io"
-    },
+const gameContainer = document.getElementById("gameContainer");
+const searchInput = document.getElementById("searchInput");
 
-    {
-        "id": "surviv",
-        "title": "Surviv.io",
-        "description": "A top-down battle royale game where players fight to become the last survivor.",
-        "category": "Survival",
-        "thumbnail": "assets/images/surviv.png",
-        "url": "https://surviv.io"
-    },
 
-    {
-        "id": "agar",
-        "title": "Agar.io",
-        "description": "Grow your cell, eat smaller players, and dominate the leaderboard.",
-        "category": "Arcade",
-        "thumbnail": "assets/images/agar.png",
-        "url": "https://agar.io"
+async function loadGames(){
+
+    try {
+
+        const response = await fetch("./data/games.json");
+
+
+        if(!response.ok){
+
+            throw new Error(
+                "Could not load games.json"
+            );
+
+        }
+
+
+        allGames = await response.json();
+
+
+        displayGames(allGames);
+
+
     }
-]
+
+    catch(error){
+
+        console.error(error);
+
+
+        gameContainer.innerHTML = `
+
+        <div class="no-games">
+
+        Failed to load games.
+
+        Check console.
+
+        </div>
+
+        `;
+
+    }
+
+}
+
+
+
+function displayGames(games){
+
+
+    gameContainer.innerHTML = "";
+
+
+    games.forEach(game => {
+
+
+        const card = document.createElement("div");
+
+
+        card.className = "game-card";
+
+
+        card.innerHTML = `
+
+        <img 
+        src="${game.thumbnail}"
+        alt="${game.title}"
+        >
+
+
+        <div class="game-content">
+
+
+        <h3>
+        ${game.title}
+        </h3>
+
+
+        <p>
+        ${game.description}
+        </p>
+
+
+        <span class="category">
+        ${game.category}
+        </span>
+
+
+        <a 
+        class="play-button"
+        href="play.html?game=${game.id}">
+        PLAY NOW
+        </a>
+
+
+        </div>
+
+        `;
+
+
+        gameContainer.appendChild(card);
+
+
+    });
+
+
+}
+
+
+
+
+searchInput.addEventListener(
+"input",
+()=>{
+
+
+const value =
+searchInput.value.toLowerCase();
+
+
+
+const filtered =
+allGames.filter(game =>
+
+game.title
+.toLowerCase()
+.includes(value)
+
+);
+
+
+
+displayGames(filtered);
+
+
+
+});
+
+
+
+
+
+document
+.querySelectorAll("[data-category]")
+.forEach(button=>{
+
+
+button.addEventListener(
+"click",
+()=>{
+
+
+const category =
+button.dataset.category;
+
+
+
+if(category === "all"){
+
+displayGames(allGames);
+
+return;
+
+}
+
+
+
+displayGames(
+
+allGames.filter(
+game =>
+game.category === category
+)
+
+);
+
+
+
+});
+
+
+
+});
+
+
+
+loadGames();

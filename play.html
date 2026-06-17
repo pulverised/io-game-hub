@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
 
 <head>
 
-<title>Playing Game</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Playing Game - IO Game Hub</title>
 
 <link rel="stylesheet" href="css/style.css">
 
@@ -14,7 +16,31 @@
 <body>
 
 
-<div class="game-container">
+<header class="game-header">
+
+
+<a href="index.html" class="back-button">
+← Back
+</a>
+
+
+<h1 id="gameTitle">
+Loading...
+</h1>
+
+
+<button id="fullscreenButton">
+Fullscreen
+</button>
+
+
+</header>
+
+
+
+
+
+<main class="player-container">
 
 
 <iframe
@@ -23,32 +49,41 @@ id="gameFrame"
 
 allowfullscreen
 
->
+allow="fullscreen; autoplay; gamepad;"
 
+loading="lazy"
+
+>
 
 </iframe>
 
 
-</div>
+</main>
 
 
-<script>
 
 
-const params =
-new URLSearchParams(location.search);
+
+<section class="game-info">
 
 
-const game =
-params.get("game");
+<h2 id="infoTitle">
+
+</h2>
 
 
-document
-.getElementById("gameFrame")
-.src = game;
+<p id="infoDescription">
+
+</p>
 
 
-</script>
+</section>
+
+
+
+
+
+<script src="js/player.js"></script>
 
 
 </body>

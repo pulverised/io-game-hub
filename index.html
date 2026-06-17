@@ -1,7 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>IO Game Hub</title>
 
@@ -15,19 +18,132 @@
 
 <header>
 
-<h1>IO Game Hub</h1>
+<div class="logo">
+🎮 IO Game Hub
+</div>
+
+
+<nav>
+
+<a href="index.html">
+Home
+</a>
+
+<a href="#categories">
+Categories
+</a>
+
+<a href="#featured">
+Featured
+</a>
+
+</nav>
+
+
+<div class="search-box">
 
 <input 
-id="search"
+id="searchInput"
+type="text"
 placeholder="Search games..."
 >
+
+</div>
+
 
 </header>
 
 
-<section id="games">
+
+<section class="hero">
+
+
+<h1>
+Play Popular IO Games
+</h1>
+
+
+<p>
+A collection of browser multiplayer games in one place.
+</p>
+
 
 </section>
+
+
+
+
+<section id="categories">
+
+
+<h2>
+Categories
+</h2>
+
+
+<div class="categories">
+
+
+<button data-category="all">
+All
+</button>
+
+
+<button data-category="FPS">
+FPS
+</button>
+
+
+<button data-category="Survival">
+Survival
+</button>
+
+
+<button data-category="Arcade">
+Arcade
+</button>
+
+
+<button data-category="Strategy">
+Strategy
+</button>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+<section id="featured">
+
+
+<h2>
+Featured Games
+</h2>
+
+
+<div id="gameContainer" class="games-grid">
+
+
+</div>
+
+
+</section>
+
+
+
+<footer>
+
+<p>
+IO Game Hub © 2026
+</p>
+
+
+</footer>
 
 
 

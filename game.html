@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
 
 <head>
 
-<title>
-Playing Game
-</title>
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Playing Game</title>
 
 <link rel="stylesheet" href="css/style.css">
 
@@ -19,25 +20,38 @@ Playing Game
 <header>
 
 <h1 id="title">
-Loading...
+Loading Game...
 </h1>
 
 </header>
 
 
 
-<section class="player">
+<div class="game-container">
+
+
+<div id="mouse-overlay">
+
+CLICK TO PLAY
+
+</div>
+
 
 
 <iframe
+
 id="game-frame"
+
 allow="pointer-lock; fullscreen"
+
 allowfullscreen
+
 sandbox="allow-scripts allow-forms allow-same-origin">
+
 </iframe>
 
 
-</section>
+</div>
 
 
 

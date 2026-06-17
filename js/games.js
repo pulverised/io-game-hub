@@ -1,12 +1,12 @@
 const games = [
 
 {
-    title:"Tank Arena",
+    title:"Kirka IO",
 
     image:"images/tank.jpg",
 
     description:
-    "Fast multiplayer tank battles.",
+    "Multiplayer shooter.",
 
     categories:[
         "Action",
@@ -14,7 +14,7 @@ const games = [
     ],
 
     url:
-    "https://example.com"
+    "https://snipers.io"
 },
 
 

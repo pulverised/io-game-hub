@@ -1,3 +1,5 @@
+console.log("games.js loaded");
+
 let allGames = [];
 
 const gameContainer = document.getElementById("gameContainer");
@@ -32,17 +34,10 @@ async function loadGames(){
 
         console.error(error);
 
-
         gameContainer.innerHTML = `
-
-        <div class="no-games">
-
-        Failed to load games.
-
-        Check console.
-
-        </div>
-
+            <div class="no-games">
+                Failed to load games.
+            </div>
         `;
 
     }
